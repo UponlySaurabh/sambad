@@ -1,0 +1,35 @@
+type User {
+  id: ID!
+  username: String!
+  phone: String!
+  password: String!
+  contacts: [Contact!]!
+}
+
+type Contact {
+  id: ID!
+  name: String!
+  phone: String!
+  user: User!
+}
+
+type Message {
+  id: ID!
+  from: User!
+  to: User!
+  content: String!
+  timestamp: String!
+}
+
+type Query {
+  me: User
+  contacts: [Contact!]!
+  messages(withUserId: ID!): [Message!]!
+}
+
+type Mutation {
+  register(username: String!, phone: String!, password: String!): String!
+  login(phone: String!, password: String!): String!
+  addContact(name: String!, phone: String!): Contact!
+  sendMessage(toUserId: ID!, content: String!): Message!
+}
