@@ -1,0 +1,37 @@
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  password: String!
+  createdAt: String!
+}
+
+type Contact {
+  id: ID!
+  name: String!
+  phone: String!
+  owner: User!
+}
+
+type Message {
+  id: ID!
+  from: User!
+  to: User!
+  content: String!
+  createdAt: String!
+  private: Boolean!
+}
+
+type Query {
+  me: User
+  contacts: [Contact!]!
+  messages(contactId: ID!): [Message!]!
+}
+
+type Mutation {
+  register(name: String!, email: String!, password: String!): User!
+  login(email: String!, password: String!): String! # returns JWT
+  addContact(name: String!, phone: String!): Contact!
+  sendMessage(to: ID!, content: String!, private: Boolean): Message!
+  deleteAccount: Boolean!
+}

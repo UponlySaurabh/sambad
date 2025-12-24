@@ -1,0 +1,32 @@
+{
+  "name": "sambad-backend",
+  "version": "1.0.0",
+  "description": "Secure chat backend with Node.js, GraphQL, PostgreSQL, JWT, HTTPS.",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "start:dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "build": "tsc",
+    "migrate": "node-pg-migrate up"
+  },
+  "dependencies": {
+    "apollo-server-express": "^3.12.0",
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "graphql": "^16.8.0",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.11.3"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.2",
+    "@types/node": "^20.8.10",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.2.2",
+    "node-pg-migrate": "^7.7.0"
+  }
+}
