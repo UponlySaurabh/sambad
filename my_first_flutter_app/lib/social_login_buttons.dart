@@ -13,7 +13,7 @@ class SocialLoginButtons extends StatelessWidget {
         SignInButton(
           Buttons.Google,
           onPressed: onGoogle ?? () {},
-          text: 'Sign in with Google',
+          text: 'Sign in with Googl',
         ),
         const SizedBox(height: 12),
         SignInButton(
