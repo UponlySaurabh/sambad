@@ -85,11 +85,15 @@ jobs:
           name: release-apk
           path: ${{ steps.find-project.outputs.project_dir }}/build/app/outputs/flutter-apk/app-release.apk
       
+      - name: Decode Firebase credentials
+        run: |
+          echo "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}" | base64 -d > ${{ runner.temp }}/firebase-credentials.json
+      
       - name: Upload to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
           appId: ${{ secrets.FIREBASE_APP_ID }}
-          serviceCredentialsFileContent: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          serviceCredentialsFile: ${{ runner.temp }}/firebase-credentials.json
           groups: testers
           file: ${{ steps.find-project.outputs.project_dir }}/build/app/outputs/flutter-apk/app-release.apk
           releaseNotes: |
